@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2jmufvltrgww"]
+
+[ext_resource type="Texture2D" path="res://scenes/characters/char0.tres" id="2_qqr4u"]
+
+[sub_resource type="GDScript" id="GDScript_54qew"]
+script/source = "extends CharacterBody2D
+
+@export var character = Global.character
+@export var SPEED = 600
+
+var chars = [\"res://scenes/characters/char0.tres\", \"res://scenes/characters/char1.tres\", \"res://scenes/characters/char2.tres\", \"res://scenes/characters/char3.tres\", \"res://scenes/characters/char4.tres\"]
+
+func _ready():
+	$Sprite2D.texture = load(chars[character])
+	$Sprite2D.scale = Vector2(2,2)
+	$Sprite2D.flip_h = true
+	
+func _physics_process(_delta):
+	if Input.is_action_pressed(\"left\"):
+		$Sprite2D.flip_h = false
+	if Input.is_action_pressed(\"right\"):
+		$Sprite2D.flip_h = true
+	
+	var direction = Input.get_vector(\"left\", \"right\", \"up\", \"down\")
+	velocity = direction * SPEED
+	move_and_slide()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqr4u"]
+size = Vector2(41, 58.5)
+
+[node name="Character" type="CharacterBody2D"]
+script = SubResource("GDScript_54qew")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_qqr4u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, 1.25)
+shape = SubResource("RectangleShape2D_qqr4u")
+
+[node name="Camera2D" type="Camera2D" parent="."]

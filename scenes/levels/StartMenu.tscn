@@ -1,0 +1,128 @@
+[gd_scene load_steps=15 format=3 uid="uid://ckjnk77441bry"]
+
+[ext_resource type="Texture2D" uid="uid://cwbcc1mj76tb" path="res://Assets/logo (2).png" id="1_cedaj"]
+[ext_resource type="Script" uid="uid://dyfeow35w7014" path="res://scripts/start_menu.gd" id="1_renis"]
+[ext_resource type="Texture2D" uid="uid://cmtkvlbiidp4e" path="res://Assets/clouds.jpeg" id="2_627k2"]
+[ext_resource type="Texture2D" uid="uid://bb38gk4b08mqs" path="res://Assets/play.png" id="2_x61vx"]
+[ext_resource type="Texture2D" uid="uid://b88qlo4otpqoa" path="res://Assets/credits.png" id="3_nqbc0"]
+[ext_resource type="Texture2D" uid="uid://obagw0ljoprk" path="res://Assets/play hover.png" id="3_xrtr6"]
+[ext_resource type="Texture2D" uid="uid://dbe4w7akuloey" path="res://Assets/credits hover.png" id="5_0h8mx"]
+[ext_resource type="Texture2D" uid="uid://bgvtjpqdqn4of" path="res://Assets/square1.png" id="8_y2811"]
+[ext_resource type="AudioStream" uid="uid://bj8my3b6oohhq" path="res://Assets/audio/intro.wav" id="10_raufm"]
+[ext_resource type="Texture2D" path="res://scenes/characters/char0.tres" id="11_8r3jf"]
+[ext_resource type="Texture2D" path="res://scenes/characters/char1.tres" id="12_7puhr"]
+[ext_resource type="Texture2D" path="res://scenes/characters/char2.tres" id="13_5dyjb"]
+[ext_resource type="Texture2D" path="res://scenes/characters/char3.tres" id="14_xjx2v"]
+[ext_resource type="Texture2D" path="res://scenes/characters/char4.tres" id="15_ea046"]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+script = ExtResource("1_renis")
+
+[node name="Clouds" type="Sprite2D" parent="."]
+position = Vector2(601, 361.5)
+scale = Vector2(2, 2)
+texture = ExtResource("2_627k2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Logo" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_cedaj")
+stretch_mode = 3
+
+[node name="MenuOptions" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Play" type="TextureButton" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+texture_normal = ExtResource("2_x61vx")
+texture_pressed = ExtResource("2_x61vx")
+texture_hover = ExtResource("3_xrtr6")
+stretch_mode = 3
+
+[node name="Credit" type="TextureButton" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+texture_normal = ExtResource("3_nqbc0")
+texture_pressed = ExtResource("3_nqbc0")
+texture_hover = ExtResource("5_0h8mx")
+stretch_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Character1" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("8_y2811")
+
+[node name="Character2" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("8_y2811")
+
+[node name="Character3" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("8_y2811")
+
+[node name="Character4" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("8_y2811")
+
+[node name="Character5" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("8_y2811")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_raufm")
+volume_db = -6.559
+autoplay = true
+attenuation = 1e-05
+
+[node name="Char0" type="Sprite2D" parent="."]
+position = Vector2(217.5, 596)
+scale = Vector2(4.65625, 4.65625)
+texture = ExtResource("11_8r3jf")
+
+[node name="Char1" type="Sprite2D" parent="."]
+position = Vector2(396.5, 595.5)
+scale = Vector2(4.71875, 4.6875)
+texture = ExtResource("12_7puhr")
+
+[node name="Char2" type="Sprite2D" parent="."]
+position = Vector2(575.5, 596)
+scale = Vector2(4.71875, 4.71875)
+texture = ExtResource("13_5dyjb")
+
+[node name="Char3" type="Sprite2D" parent="."]
+position = Vector2(754.5, 596)
+scale = Vector2(4.71875, 4.71875)
+texture = ExtResource("14_xjx2v")
+
+[node name="Char4" type="Sprite2D" parent="."]
+position = Vector2(933.5, 596)
+scale = Vector2(4.71875, 4.71875)
+texture = ExtResource("15_ea046")
+
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/MenuOptions/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/HBoxContainer/Character1" to="." method="_on_character_1_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/HBoxContainer/Character2" to="." method="_on_character_2_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/HBoxContainer/Character3" to="." method="_on_character_3_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/HBoxContainer/Character4" to="." method="_on_character_4_button_down"]
+[connection signal="button_down" from="HBoxContainer/VBoxContainer/HBoxContainer/Character5" to="." method="_on_character_5_button_down"]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://ciiw2wga2skee"]
+
+[ext_resource type="Script" uid="uid://v37yn56tbsrh" path="res://scripts/main_world.gd" id="1_uoqbt"]
+[ext_resource type="PackedScene" uid="uid://bqh35pwjlec0d" path="res://scenes/levels/level_one.tscn" id="2_43o5b"]
+[ext_resource type="PackedScene" uid="uid://b2jmufvltrgww" path="res://scenes/characters/character.tscn" id="2_uoqbt"]
+[ext_resource type="AudioStream" uid="uid://c2wuq0b2sms7e" path="res://Assets/audio/song.wav" id="4_byw8m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_itk02"]
+radius = 17.0294
+
+[node name="Main_World" type="Node2D"]
+script = ExtResource("1_uoqbt")
+
+[node name="Level_One" parent="." instance=ExtResource("2_43o5b")]
+
+[node name="win_Lable" type="Label" parent="."]
+visible = false
+offset_left = 843.0
+offset_top = 192.0
+offset_right = 995.0
+offset_bottom = 241.0
+text = "You are on the Spot
+"
+
+[node name="Character" parent="." instance=ExtResource("2_uoqbt")]
+position = Vector2(47, 106)
+
+[node name="Finish" type="Area2D" parent="."]
+position = Vector2(1247, 384)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish"]
+position = Vector2(1, 4)
+shape = SubResource("CircleShape2D_itk02")
+
+[node name="ColorRect" type="ColorRect" parent="Finish"]
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 22.0
+offset_bottom = 22.0
+color = Color(0.711376, 0.291495, 0.214267, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_byw8m")
+autoplay = true
+max_distance = 4096.0
+attenuation = 1e-05
+
+[connection signal="body_entered" from="Finish" to="." method="_on_finish_body_entered"]
+[connection signal="body_exited" from="Finish" to="." method="_on_finish_body_exited"]
