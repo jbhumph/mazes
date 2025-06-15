@@ -1,13 +1,24 @@
 # Mazes
 
-This was a game that the WCC Programming club made for our game jam on 06/06/2025.
+## Overview
 
-We used Godot as our engine and GS Script for our scripting language.
 
-More details to come.
+## Contributors
+- John Humphrey
+- Juliana Serrano
+- Kai Schenkel
+- Derrick Toner
 
-##Participants:
-John Humphrey
-Juliana Serrano
-Kai Schenkel
-Derrick Toner
+
+## Contents
+
+
+## About
+
+
+## Atrributions & Dependencies
+
+
+## Screenshots / Images
+
+
