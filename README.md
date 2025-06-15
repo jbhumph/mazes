@@ -17,8 +17,8 @@ The game itself is comprised of a menu screen and (so far) one maze level. The u
 - [Overview](#overview)
 - [Contributors](#contributors)
 - [About](#about)
-- [Attributions & Dependencies](#attributions)
-- [Screenshots / Images](#screenshots)
+- [Attributions & Dependencies](#attributions--dependencies)
+- [Screenshots / Images](#screenshots--images)
 
 
 ## About
